@@ -162,6 +162,14 @@ body {
   background-color: var(--TEXT-LIGHT);
 }
 
+.hit {
+  background-image: url(./svg/close.svg);
+}
+
+.miss {
+  background-image: url(./svg/circle-small.svg);
+}
+
 /* SHIPS */
 
 .ship0 {
