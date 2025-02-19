@@ -43,7 +43,6 @@ function newTurn() {
         parseInt(choice.dataset.y),
         parseInt(choice.dataset.x),
       ];
-      console.log(coOrdinates);
       computer.gameboard.recieveAttack(coOrdinates);
       generateCompDOM(compDOM, computer.gameboard);
       const compChoice = getCompChoice(player.gameboard.getPrevShots());

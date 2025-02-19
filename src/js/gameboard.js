@@ -95,7 +95,6 @@ export default function Gameboard() {
     ships.push(Ship(shipLength));
   };
   const recieveAttack = (coOrds) => {
-    console.log(coOrds);
     validateAttack(coOrds);
     const [y, x] = coOrds;
     for (let i = 0, n = shipCoOrds.length; i < n; i++) {
