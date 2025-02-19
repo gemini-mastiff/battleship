@@ -70,13 +70,22 @@ function createShipCoOrdinates(coOrd1, coOrd2) {
 export default function Gameboard() {
   const ships = [];
   const shipCoOrds = [];
-  const prevHits = [];
-  const prevMisses = [];
+  const prevShots = [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [(0, 0, 0, 0, 0, 0, 0, 0, 0, 0)],
+    [(0, 0, 0, 0, 0, 0, 0, 0, 0, 0)],
+    [(0, 0, 0, 0, 0, 0, 0, 0, 0, 0)],
+    [(0, 0, 0, 0, 0, 0, 0, 0, 0, 0)],
+    [(0, 0, 0, 0, 0, 0, 0, 0, 0, 0)],
+    [(0, 0, 0, 0, 0, 0, 0, 0, 0, 0)],
+    [(0, 0, 0, 0, 0, 0, 0, 0, 0, 0)],
+    [(0, 0, 0, 0, 0, 0, 0, 0, 0, 0)],
+    [(0, 0, 0, 0, 0, 0, 0, 0, 0, 0)],
+  ];
 
   const getShips = () => ships;
   const getShipCoOrds = () => shipCoOrds;
-  const getPrevHits = () => prevHits;
-  const getPrevMisses = () => prevMisses;
+  const getPrevShots = () => prevShots;
 
   const addShips = (coOrd1, coOrd2) => {
     validateCoOrdinates(coOrd1, coOrd2);
@@ -86,18 +95,20 @@ export default function Gameboard() {
     ships.push(Ship(shipLength));
   };
   const recieveAttack = (coOrds) => {
+    console.log(coOrds);
     validateAttack(coOrds);
+    const [y, x] = coOrds;
     for (let i = 0, n = shipCoOrds.length; i < n; i++) {
       const currArr = shipCoOrds[i];
-      for (let j = 0, n2 = currArr.length; j < n2; j++) {
+      for (let j = 0, m = currArr.length; j < m; j++) {
         if (compareArrays(currArr[j], coOrds)) {
           ships[i].hit();
-          prevHits.push(coOrds);
+          prevShots[y][x] = "h";
           return true;
         }
       }
     }
-    prevMisses.push(coOrds);
+    prevShots[y][x] = "m";
     return false;
   };
   const allShipsSunk = () => {
@@ -110,10 +121,22 @@ export default function Gameboard() {
   return {
     getShips,
     getShipCoOrds,
-    getPrevHits,
-    getPrevMisses,
+    getPrevShots,
     addShips,
     recieveAttack,
     allShipsSunk,
   };
 }
+
+// prevShots = [
+// [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+// [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+// [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+// [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+// [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+// [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+// [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+// [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+// [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+// [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+// ]
