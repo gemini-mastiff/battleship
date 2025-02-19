@@ -8,18 +8,18 @@ function clearElement(element) {
   element.textContent = "";
 }
 
-function generatePlayerBoard(board, playerBoard) {
+function generatePlayerDOM(board, playerBoard) {
   clearElement(board);
-  const prevHits = playerBoard.getPrevHits();
-  const prevMisses = playerBoard.getPrevMisses();
   const shipCoOrds = playerBoard.getShipCoOrds();
+  const prevShots = playerBoard.getPrevShots();
 
   for (let i = 0; i < 10; i++) {
     const row = document.createElement("div");
     for (let j = 0; j < 10; j++) {
       const cell = document.createElement("div");
       cell.classList.add("cell");
-      cell.setAttribute("data-coordinates", [i, j]);
+      cell.setAttribute("data-y", i);
+      cell.setAttribute("data-x", j);
 
       for (let x = 0, n = shipCoOrds.length; x < n; x++) {
         for (let y = 0, m = shipCoOrds[x].length; y < m; y++) {
@@ -30,19 +30,8 @@ function generatePlayerBoard(board, playerBoard) {
         }
       }
 
-      for (let x = 0, n = prevHits.length; x < n; x++) {
-        if (compareArrays(prevHits[x], [i, j])) {
-          cell.classList.add("hit");
-          break;
-        }
-      }
-
-      for (let x = 0, n = prevMisses.length; x < n; x++) {
-        if (compareArrays(prevMisses[x], [i, j])) {
-          cell.classList.add("miss");
-          break;
-        }
-      }
+      if (prevShots[i][j] === "h") cell.classList.add("hit");
+      else if (prevShots[i][j] === "m") cell.classList.add("miss");
 
       row.append(cell);
     }
@@ -50,31 +39,21 @@ function generatePlayerBoard(board, playerBoard) {
   }
 }
 
-function generateCompBoard(board, compBoard) {
+function generateCompDOM(board, compBoard) {
   clearElement(board);
-  const prevHits = compBoard.getPrevHits();
-  const prevMisses = compBoard.getPrevMisses();
+  const prevShots = compBoard.getPrevShots();
 
   for (let i = 0; i < 10; i++) {
     const row = document.createElement("div");
     for (let j = 0; j < 10; j++) {
       const cell = document.createElement("div");
-      cell.classList.add("cell", "active");
-      cell.setAttribute("data-coordinates", [i, j]);
+      cell.classList.add("cell");
+      cell.setAttribute("data-y", i);
+      cell.setAttribute("data-x", j);
 
-      for (let x = 0, n = prevHits.length; x < n; x++) {
-        if (compareArrays(prevHits[x], [i, j])) {
-          cell.classList.add("hit", "inactive");
-          break;
-        }
-      }
-
-      for (let x = 0, n = prevMisses.length; x < n; x++) {
-        if (compareArrays(prevMisses[x], [i, j])) {
-          cell.classList.add("miss", "inactive");
-          break;
-        }
-      }
+      if (prevShots[i][j] === "h") cell.classList.add("hit");
+      else if (prevShots[i][j] === "m") cell.classList.add("miss");
+      else cell.classList.add("active");
 
       row.append(cell);
     }
@@ -82,4 +61,4 @@ function generateCompBoard(board, compBoard) {
   }
 }
 
-export { generatePlayerBoard, generateCompBoard };
+export { generatePlayerDOM, generateCompDOM };
