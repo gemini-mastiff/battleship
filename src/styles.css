@@ -153,3 +153,25 @@ body {
   width: 2rem;
   height: 2rem;
 }
+
+/* SHIPS */
+
+.ship0 {
+  background-color: purple;
+}
+
+.ship1 {
+  background-color: blue;
+}
+
+.ship2 {
+  background-color: green;
+}
+
+.ship3 {
+  background-color: gold;
+}
+
+.ship4 {
+  background-color: red;
+}
