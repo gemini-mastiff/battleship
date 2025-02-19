@@ -32,6 +32,14 @@ for (let i = 0, n = ships.length; i < n; i++) {
   computer.gameboard.addShips(ships[i][0], ships[i][1]);
 }
 
+function winState(winner) {
+  console.log(`${winner} wins!`);
+  const choices = document.querySelectorAll(".active");
+  choices.forEach((choice) => {
+    choice.classList.remove("active");
+  });
+}
+
 function newTurn() {
   const playerDOM = document.querySelector("#player-board");
   const compDOM = document.querySelector("#computer-board");
@@ -45,10 +53,18 @@ function newTurn() {
       ];
       computer.gameboard.recieveAttack(coOrdinates);
       generateCompDOM(compDOM, computer.gameboard);
-      const compChoice = getCompChoice(player.gameboard.getPrevShots());
-      player.gameboard.recieveAttack(compChoice);
-      generatePlayerDOM(playerDOM, player.gameboard);
-      newTurn();
+      if (computer.gameboard.allShipsSunk()) {
+        winState("Player");
+      } else {
+        const compChoice = getCompChoice(player.gameboard.getPrevShots());
+        player.gameboard.recieveAttack(compChoice);
+        generatePlayerDOM(playerDOM, player.gameboard);
+        if (player.gameboard.allShipsSunk()) {
+          winState("Computer");
+        } else {
+          newTurn();
+        }
+      }
     });
   });
 }
