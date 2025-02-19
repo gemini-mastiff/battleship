@@ -154,6 +154,14 @@ body {
   height: 2rem;
 }
 
+.active:hover {
+  background-color: var(--BG-COLOUR);
+}
+
+.active:active {
+  background-color: var(--TEXT-LIGHT);
+}
+
 /* SHIPS */
 
 .ship0 {
