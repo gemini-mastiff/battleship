@@ -1,6 +1,9 @@
 import "./styles.css";
 import Player from "./js/player.js";
-import { generateGameBoard } from "./js/DOM-manipulation.js";
+import {
+  generatePlayerBoard,
+  generateCompBoard,
+} from "./js/DOM-manipulation.js";
 
 window.addEventListener("DOMContentLoaded", () => {
   const ships = [
@@ -35,6 +38,6 @@ window.addEventListener("DOMContentLoaded", () => {
 
   const playerBoard = document.querySelector("#player-board");
   const compBoard = document.querySelector("#computer-board");
-  generateGameBoard(playerBoard, player);
-  generateGameBoard(compBoard, computer);
+  generatePlayerBoard(playerBoard, player.gameboard);
+  generateCompBoard(compBoard, computer.gameboard);
 });
