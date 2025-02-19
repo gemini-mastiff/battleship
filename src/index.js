@@ -1,6 +1,7 @@
 import "./styles.css";
 import Player from "./js/player.js";
 import { generatePlayerDOM, generateCompDOM } from "./js/DOM-manipulation.js";
+import getCompChoice from "./js/comp-choice.js";
 
 const ships = [
   [
@@ -45,6 +46,9 @@ function newTurn() {
       console.log(coOrdinates);
       computer.gameboard.recieveAttack(coOrdinates);
       generateCompDOM(compDOM, computer.gameboard);
+      const compChoice = getCompChoice(player.gameboard.getPrevShots());
+      player.gameboard.recieveAttack(compChoice);
+      generatePlayerDOM(playerDOM, player.gameboard);
       newTurn();
     });
   });
