@@ -8,8 +8,8 @@ function clearElement(element) {
   element.textContent = "";
 }
 
-function generatePlayerDOM(board, playerBoard) {
-  clearElement(board);
+function generatePlayerDOM(DOMboard, playerBoard) {
+  clearElement(DOMboard);
   const shipCoOrds = playerBoard.getShipCoOrds();
   const prevShots = playerBoard.getPrevShots();
 
@@ -35,12 +35,12 @@ function generatePlayerDOM(board, playerBoard) {
 
       row.append(cell);
     }
-    board.append(row);
+    DOMboard.append(row);
   }
 }
 
-function generateCompDOM(board, compBoard) {
-  clearElement(board);
+function generateCompDOM(DOMboard, compBoard) {
+  clearElement(DOMboard);
   const prevShots = compBoard.getPrevShots();
 
   for (let i = 0; i < 10; i++) {
@@ -57,7 +57,7 @@ function generateCompDOM(board, compBoard) {
 
       row.append(cell);
     }
-    board.append(row);
+    DOMboard.append(row);
   }
 }
 
