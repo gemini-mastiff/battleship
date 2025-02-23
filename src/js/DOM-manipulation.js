@@ -1,7 +1,41 @@
 import compareArrays from "./compare-arrays.js";
+import createShipCoOrdinates from "./create-ship-coordinates.js";
 
 function clearElement(element) {
   element.textContent = "";
+}
+
+function generateBoard(DOMboard, ships = undefined) {
+  clearElement(DOMboard);
+
+  let shipCoOrds = [];
+  if (ships) {
+    for (let i = 0, n = ships.length; i < n; i++) {
+      shipCoOrds.push(createShipCoOrdinates(ships[i][0], ships[i][1]));
+    }
+  }
+
+  for (let i = 0; i < 10; i++) {
+    const row = document.createElement("div");
+    for (let j = 0; j < 10; j++) {
+      const cell = document.createElement("div");
+      cell.classList.add("cell");
+      cell.setAttribute("data-y", i);
+      cell.setAttribute("data-x", j);
+
+      for (let x = 0, n = shipCoOrds.length; x < n; x++) {
+        for (let y = 0, m = shipCoOrds[x].length; y < m; y++) {
+          if (compareArrays(shipCoOrds[x][y], [i, j])) {
+            cell.classList.add(`ship${x}`);
+            break;
+          }
+        }
+      }
+
+      row.append(cell);
+    }
+    DOMboard.append(row);
+  }
 }
 
 function generatePlayerDOM(DOMboard, playerBoard) {
@@ -68,4 +102,4 @@ function generateCompDOM(DOMboard, compBoard) {
   }
 }
 
-export { generatePlayerDOM, generateCompDOM };
+export { generateBoard, generatePlayerDOM, generateCompDOM };
