@@ -56,6 +56,3 @@ export default function randomShips() {
   }
   return newCoOrds;
 }
-
-const arr = randomShips();
-console.log(arr);
