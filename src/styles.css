@@ -112,7 +112,21 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 1rem;
 }
+
+/* ANNOUNCE SECTION */
+
+.announce-section {
+  width: fit-content;
+  background-color: var(--MAIN-COLOUR);
+  gap: 1.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 1.5rem;
+  box-shadow: 2px 3px 5px 0px #bcbcbc;
+}
+
+/* GAME SECTION */
 
 .game-section {
   width: fit-content;
@@ -190,4 +204,21 @@ body {
 
 .ship4 {
   background-color: red;
+}
+
+/* BUTTON SECTION */
+
+.button-section {
+  width: 50rem;
+  display: flex;
+  justify-content: space-around;
+}
+
+.button-section > div {
+  width: fit-content;
+  background-color: var(--MAIN-COLOUR);
+  gap: 1.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 1.5rem;
+  box-shadow: 2px 3px 5px 0px #bcbcbc;
 }
