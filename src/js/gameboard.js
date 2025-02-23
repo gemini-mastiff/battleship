@@ -1,5 +1,6 @@
 import Ship from "./ship.js";
 import compareArrays from "./compare-arrays.js";
+import createShipCoOrdinates from "./create-ship-coordinates.js";
 
 function validateAttack(coOrds) {
   if (coOrds[0] < 0 || coOrds[0] > 9)
@@ -31,35 +32,6 @@ function validateCoOrdinates(a, b) {
     throw new Error(
       "Difference between Co-Ordinates must be no greater than 4",
     );
-}
-
-function createShipCoOrdinates(coOrd1, coOrd2) {
-  const y = coOrd1[0];
-  const x = coOrd1[1];
-  const y2 = coOrd2[0];
-  const x2 = coOrd2[1];
-
-  let constant;
-  let min;
-  let max;
-  const coOrds = [];
-
-  if (x === x2 && y !== y2) {
-    constant = x;
-    min = y < y2 ? y : y2;
-    max = y > y2 ? y : y2;
-    for (let i = min; i <= max; i++) {
-      coOrds.push([i, constant]);
-    }
-  } else if (x !== x2 && y === y2) {
-    constant = y;
-    min = x < x2 ? x : x2;
-    max = x > x2 ? x : x2;
-    for (let i = min; i <= max; i++) {
-      coOrds.push([constant, i]);
-    }
-  }
-  return coOrds;
 }
 
 export default function Gameboard() {
