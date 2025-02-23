@@ -1,10 +1,5 @@
 import Ship from "./ship.js";
-
-function compareArrays(a, b) {
-  return (
-    a.length === b.length && a.every((element, index) => element === b[index])
-  );
-}
+import compareArrays from "./compare-arrays.js";
 
 function validateAttack(coOrds) {
   if (coOrds[0] < 0 || coOrds[0] > 9)
