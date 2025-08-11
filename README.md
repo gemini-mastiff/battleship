@@ -9,9 +9,15 @@ This is a basic Battleship game implemented as a web application using HTML, CSS
 - Basic logic for hits, misses, and sinking ships.
 - Responsive and clean interface using CSS.
 
+## Getting Started
+
+    git clone git@github.com:gemini-mastiff/battleship.git
+    cd battleship
+    npm install
+    npm run dev
+
 ## Notes
 
 No drag-and-drop functionality for ship placement (planned for future improvements).
 
 This is a simple, minimal implementation designed for learning.
-
