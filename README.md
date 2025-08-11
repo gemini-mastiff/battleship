@@ -1,11 +1,10 @@
 # Battleship
 
 This basic Battleship game was built as part of my journey to practice JavaScript logic, DOM manipulation, and Webpack bundling.
-It uses HTML, CSS, and JavaScript to create an interactive grid-based gameplay experience where ships are randomly placed. The game features turn-based logic to detect hits, misses, and determine the winner.
+It uses HTML, CSS, and JavaScript to create an interactive grid-based gameplay experience where ships are randomly placed. The game features turn-based logic to detect hits & misses, and to determine the winner.
 
 ## Features
 
-- Randomized ship placement at the start of each game (no drag-and-drop).
 - Turn-based gameplay where the player guesses ship positions.
 - Logic for tracking hits, misses, and sunk ships.
 - Responsive, clean interface styled with CSS.
