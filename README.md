@@ -1,20 +1,36 @@
 # Battleship
 
-This is a basic Battleship game implemented as a web application using HTML, CSS, and JavaScript. The ships are randomly placed on the board, and the gameplay features a simple loop with logic to handle turns, determine hits or misses, and ultimately decide the winner.
+This basic Battleship game was built as part of my journey to practice JavaScript logic, DOM manipulation, and Webpack bundling.
+It uses HTML, CSS, and JavaScript to create an interactive grid-based gameplay experience where ships are randomly placed. The game features turn-based logic to detect hits, misses, and determine the winner.
 
 ## Features
 
-- Randomized ship placement on the grid (no drag-and-drop).
-- Simple gameplay loop allowing the player to guess positions.
-- Basic logic for hits, misses, and sinking ships.
-- Responsive and clean interface using CSS.
+- Randomized ship placement at the start of each game (no drag-and-drop).
+- Turn-based gameplay where the player guesses ship positions.
+- Logic for tracking hits, misses, and sunk ships.
+- Responsive, clean interface styled with CSS.
 
 ## Getting Started
 
+Clone the repo:
+
     git clone git@github.com:gemini-mastiff/battleship.git
     cd battleship
+
+Install the dependencies:
+
     npm install
+
+Run the local server:
+
     npm run dev
+
+## Technologies Used
+
+- HTML5
+- CSS3
+- JavaScript (ES6+)
+- Webpack
 
 ## Notes
 
